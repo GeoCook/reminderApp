@@ -10,12 +10,12 @@ app.get('/data', async(req, res) => {
 //add email and password to joinus database 
 app.get('/register', async (req, res) => {
     await addEmail(req.query.email, req.query.password);
-    res.send({massage:"successfully added to database"})
+    res.send({message:"successfully added to database"})
 });
 //storing reminders
 app.get('/reminder', async (req, res) => {
     await addReminder(req.query.reminder);
-    res.send({massage:"successfully added to database"})
+    res.send({message:"reminder logged"})
 });
 //access localhost:3012
 app.listen(3012, () => {
