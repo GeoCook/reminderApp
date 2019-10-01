@@ -1,5 +1,5 @@
 const express = require('express')
-const{runQuery, addEmail} = require('./app')
+const{runQuery, addEmail, addReminder} = require('./app')
 
 const app = express();
 //display reminders
@@ -10,6 +10,11 @@ app.get('/data', async(req, res) => {
 //add email and password to joinus database 
 app.get('/register', async (req, res) => {
     await addEmail(req.query.email, req.query.password);
+    res.send({massage:"successfully added to database"})
+});
+//storing reminders
+app.get('/register', async (req, res) => {
+    await addReminder(req.query.reminder);
     res.send({massage:"successfully added to database"})
 });
 //access localhost:3012

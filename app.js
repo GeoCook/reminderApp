@@ -29,9 +29,29 @@ const addEmail = async (email) => {
         console.log("oops something went wrong")
     }
 }
- //addEmail("alex@vivioforoneyear.com")
+
+const addReminder = async (reminder) => {
+    try{
+    let data = promisifyQuery(`INSERT INTO users(reminder) Values('${reminder}')` 
+    );
+    console.log("susseccfully added!")
+    } catch (error){
+        console.log("oops something went wrong")
+    }
+}
+
+const deleteReminder = async (id) => {
+    try{
+    let data = promisifyQuery(`DELETE FROM reminder WHERE id = ${id}`);
+    console.log("susseccfully deleted!")
+    } catch (error){
+        console.log("oops nothing was deleted")
+    }
+}
 
 module.exports = {
     runQuery,
-    addEmail
+    addEmail,
+    addReminder,
+    deleteReminder
 }

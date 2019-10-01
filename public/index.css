@@ -29,3 +29,10 @@
 	margin-top: -32px;
 	margin-right: -64px;
 }
+.formC{
+    display:flex;
+}
+.form {
+    width:500px;
+    justify-items: center;
+}
