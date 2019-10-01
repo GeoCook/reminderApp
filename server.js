@@ -13,7 +13,7 @@ app.get('/register', async (req, res) => {
     res.send({massage:"successfully added to database"})
 });
 //storing reminders
-app.get('/register', async (req, res) => {
+app.get('/reminder', async (req, res) => {
     await addReminder(req.query.reminder);
     res.send({massage:"successfully added to database"})
 });

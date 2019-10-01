@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "password",
-    database: "joinus"
+    database: "reminder"
 })
 
 const promisifyQuery = promisify(connection.query).bind(connection);
