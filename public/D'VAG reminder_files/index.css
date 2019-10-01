@@ -1,0 +1,30 @@
+.body{
+    display:flex;
+}
+.img-fluid{
+    height: 500px;
+    width:100%;
+}
+.topOfForms{
+    display:flex;
+}
+.topOfForm {
+	position: relative;
+	background: #00aabb;
+    border-radius: .4em;
+}
+
+.topOfForm:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 200px;
+	border: 64px solid transparent;
+	border-left-color: #00aabb;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -32px;
+	margin-right: -64px;
+}
