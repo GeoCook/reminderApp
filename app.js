@@ -31,13 +31,27 @@ const addEmail = async (email, password) => {
 
 const addReminder = async (reminder) => {
     try{
-        let data = await promisifyQuery(`INSERT INTO reminder(Reminder) Values('${reminder}')` 
+        let data = await promisifyQuery(`INSERT INTO reminder(Reminder) Values('${reminder} where ')` 
     );
     console.log("susseccfully added!")
     } catch (error){
         console.log("oops something went wrong")
     }
 }
+
+const editReminder = async (reminder) => {
+    try{
+        let data = await promisifyQuery(`
+        UPDATE Reminders
+        SET reminder = ${reminder}
+        WHERE personID = 1 and ;')` 
+    );
+    console.log("susseccfully edited!")
+    } catch (error){
+        console.log("oops something went wrong")
+    }
+}
+
 
 const deleteReminder = async (id) => {
     try{

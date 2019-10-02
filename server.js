@@ -17,6 +17,12 @@ app.get('/reminder', async (req, res) => {
     await addReminder(req.query.reminder);
     res.send({message:"reminder logged"})
 });
+
+//edit reminder
+app.get('/edit', async (req, res) => {
+    await addReminder(req.query.edit);
+    res.send({message:"reminder edited"})
+});
 //access localhost:3012
 app.listen(3012, () => {
     console.log("listening on port 3012");
