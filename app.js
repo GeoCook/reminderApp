@@ -12,7 +12,7 @@ const promisifyQuery = promisify(connection.query).bind(connection);
 
 const runQuery = async () => {
  try {
-    let data = await promisifyQuery ("SELECT * FROM persons left join reminder where persons.id = reminder.personId")
+    let data = await promisifyQuery ("SELECT * FROM persons left join reminder on persons.id = reminder.personId")
     return data
  } catch (error) {
      console.log(error.sqlMessage)
