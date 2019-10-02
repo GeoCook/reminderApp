@@ -12,7 +12,7 @@ const promisifyQuery = promisify(connection.query).bind(connection);
 
 const runQuery = async () => {
  try {
-    let data = await promisifyQuery ("SELECT * FROM persons left join reminder on persons.id = reminder.personId")
+    let data = await promisifyQuery ("SELECT Id, reminder FROM persons left join reminder on persons.id = reminder.personId")
     return data
  } catch (error) {
      console.log(error.sqlMessage)
@@ -29,36 +29,38 @@ const addEmail = async (email, password) => {
     }
 }
 
-const addReminder = async (reminder) => {
+const addReminder = async (reminder, id) => {
     try{
-        let data = await promisifyQuery(`INSERT INTO reminder(Reminder) Values('${reminder} where ')` 
+        let data = await promisifyQuery(`INSERT INTO reminder(reminder, personID) Values('${reminder}', ${id})` 
     );
     console.log("susseccfully added!")
     } catch (error){
-        console.log("oops something went wrong")
+        console.log(error)
     }
 }
 
-const editReminder = async (reminder) => {
+const editReminder = async (edit, id, rId) => {
     try{
-        let data = await promisifyQuery(`
-        UPDATE Reminders
-        SET reminder = ${reminder}
-        WHERE personID = 1 and ;')` 
+        let data = await promisifyQuery(
+       `UPDATE Reminder
+        SET reminder = '${edit}'
+        WHERE personID = ${id} and ID = ${rId}` 
     );
     console.log("susseccfully edited!")
     } catch (error){
-        console.log("oops something went wrong")
+        console.log(error)
     }
 }
+
+
 
 
 const deleteReminder = async (id) => {
     try{
-    let data = await promisifyQuery(`DELETE FROM reminder WHERE id = ${id}`);
+    let data = await promisifyQuery(`DELETE FROM reminder WHERE ID = ${id}`);
     console.log("susseccfully deleted!")
     } catch (error){
-        console.log("oops nothing was deleted")
+        console.log(error)
     }
 }
 
@@ -66,5 +68,6 @@ module.exports = {
     runQuery,
     addEmail,
     addReminder,
-    deleteReminder
+    deleteReminder,
+    editReminder
 }

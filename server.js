@@ -1,5 +1,5 @@
 const express = require('express')
-const{runQuery, addEmail, addReminder} = require('./app')
+const{runQuery, addEmail, addReminder, editReminder} = require('./app')
 
 const app = express();
 //display reminders
@@ -14,16 +14,16 @@ app.get('/register', async (req, res) => {
 });
 //storing reminders
 app.get('/reminder', async (req, res) => {
-    await addReminder(req.query.reminder);
+    await addReminder(req.query.reminder, req.query.id);
     res.send({message:"reminder logged"})
 });
 
 //edit reminder
 app.get('/edit', async (req, res) => {
-    await addReminder(req.query.edit);
+    await editReminder(req.query.edit,req.query.id,req.query.rId);
     res.send({message:"reminder edited"})
 });
 //access localhost:3012
-app.listen(3012, () => {
-    console.log("listening on port 3012");
+app.listen(3011, () => {
+    console.log("listening on port 3011");
 });
