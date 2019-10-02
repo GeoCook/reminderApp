@@ -1,9 +1,11 @@
 const express = require('express')
 const{runQuery, addEmail, addReminder, editReminder} = require('./app')
-const path = require('path');
+const path = require('path')
 
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.static(path.join(__dirname, "public")))
+
 //display reminders
 app.get('/data', async(req, res) => {
     let data = await runQuery();
@@ -12,7 +14,7 @@ app.get('/data', async(req, res) => {
 //add email and password to joinus database 
 app.get('/register', async (req, res) => {
     await addEmail(req.query.email, req.query.password);
-    res.send({message:"cheers mate"})
+    res.send(data)
 });
 //storing reminders
 app.get('/reminder', async (req, res) => {
