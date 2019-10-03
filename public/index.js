@@ -1,6 +1,10 @@
 const subBtn = document.getElementById("sign-up-btn")
 const inputEmail = document.getElementById("inputEmail")
 const inputPassword = document.getElementById("inputPassword")
+const logBtn = document.getElementById("sign-in-btn")
+const addBtn = document.getElementById("add-btn")
+const editBtn = document.getElementById("edit-btn")
+const removeBtn = document.getElementById("remove-btn")
 
 
 // register an Email and password
@@ -14,7 +18,7 @@ subBtn.addEventListener('click', () => {
     
 })
 //sign in
-signInBut.addEventListener('click', async () => {
+logBtn.addEventListener('click', async () => {
     
     let response = await fetch(`http://192.168.5.76:3011/pull?Email=${email}`, {mode: "no-cors"});
     let data = await response.json();
@@ -26,18 +30,18 @@ signInBut.addEventListener('click', async () => {
     // }
 })
 // add a reminder
-addReminderBut.addEventListener('click', async () => {
+addBtn.addEventListener('click', async () => {
     
     let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${email}&id=${id}&dueDate=${dueDate}`, {mode: "no-cors"});
     let data = await response.json();
 })
 // edit a reminder
-editButt.addEventListener('click', async () => {
+editBtn.addEventListener('click', async () => {
     
     let response = await fetch(`http://192.168.5.76:3011/edit?edit=${edit}&id=${id}&rId=${rId}`, {mode: "no-cors"});
 })
 // delete a reminder
-deleteBut.addEventListener('click', async () => {
+removeBtn.addEventListener('click', async () => {
     
     let response = await fetch(`http://192.168.5.76:3011/delete?rId=${rId}`, {mode: "no-cors"});
 })
