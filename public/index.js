@@ -2,7 +2,7 @@ const addBtn = document.getElementById("add-btn")
 const editBtn = document.getElementById("edit-btn")
 const removeBtn = document.getElementById("remove-btn")
 
-let loginId = globalVariable.example_attribute
+let loginId=localStorage.getItem('Data')
 
 //add a reminder
 addBtn.addEventListener('click', async () => {

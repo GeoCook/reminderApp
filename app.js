@@ -61,7 +61,7 @@ const deleteReminder = async (rId) => {
     }
 }
 
-const query = async (email, password) => {
+const query = async (email) => {
     try {
        let data = await promisifyQuery (`
 
@@ -73,7 +73,7 @@ const query = async (email, password) => {
            reminder ON persons.id = reminder.personId
        WHERE
            email = '${email}'`)
-
+            console.log(data)
            return {
             ID: data[0].Id,
             Content: data[0].reminder,
@@ -81,7 +81,7 @@ const query = async (email, password) => {
         }
         
     } catch (error) {
-        console.log("You are not registered, Please sign up to use this app")
+        console.log(error)
     }
 }
 module.exports = {
