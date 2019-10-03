@@ -21,12 +21,15 @@ if (typeof(Storage) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
   }
 
+  window.addEventListener('storage', (id) => {
+    console.log(`${id}`)
+  });
   const setData = () => {
       console.log('SET');
-      localStorage.setItem('id', `${id}`)
+      localStorage.setItem('id', `${id}`);
   }
 
-  const cleardata = () => {
-      console.log('CLEAR')
+  const clearData = () => {
+      console.log('CLEAR');
       localstroange.clear()
   }
