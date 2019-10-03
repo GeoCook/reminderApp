@@ -25,6 +25,26 @@ img{
     margin: auto;
 }
 
+#sign-in-btn2{
+    width: 100%;
+    max-width: 100px;
+    padding: 15px;
+    margin: auto;
+    background-color: #34C6BB;
+    color: #f5f6fa;
+    border-radius: 25px;
+}
+
+#sign-up-btn2{
+    width: 100%;
+    max-width: 100px;
+    padding: 15px;
+    margin: auto;
+    background-color: #34C6BB;
+    color: #f5f6fa;
+    border-radius: 25px;
+}
+
 #title{
     margin-bottom: 40px;
 }
