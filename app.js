@@ -72,7 +72,7 @@ const query = async (email, password) => {
                LEFT JOIN
            reminder ON persons.id = reminder.personId
        WHERE
-           email = '${email}' AND password = '${password}'`)
+           email = '${email}'`)
 
            return {
             ID: data[0].Id,
