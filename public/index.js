@@ -19,11 +19,11 @@ signInBut.addEventListener('click', async () => {
     let response = await fetch(`http://192.168.5.76:3011/pull?Email=${email}`, {mode: "no-cors"});
     let data = await response.json();
     console.log(date[0].ID)
-    // return {
-    //     setData(ID)
-    //     inner.HTML = data.Content,
-    //     inner.HTML = data.CA
-    // }
+    return {
+        setData(ID)
+        inner.HTML = data.Content,
+        inner.HTML = data.CA
+    }
 })
 // add a reminder
 addReminderBut.addEventListener('click', async () => {
