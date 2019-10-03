@@ -29,11 +29,11 @@ const addEmail = async (email, password) => {
     }
 }
 
-const addReminder = async (reminder, id) => {
+const addReminder = async (reminder, id, dueDate) => {
     try{
-        let data = await promisifyQuery(`INSERT INTO reminder(reminder, personID) Values('${reminder}', ${id})` 
+        let data = await promisifyQuery(`INSERT INTO reminder(reminder, personID) Values('${reminder}', ${id}, ${dueDate})` 
     );
-    console.log("susseccfully added!")
+    console.log("fully added!")
     } catch (error){
         console.log(error)
     }
@@ -46,22 +46,22 @@ const editReminder = async (edit, id, rId) => {
         SET reminder = '${edit}'
         WHERE personID = ${id} and ID = ${rId}` 
     );
-    console.log("susseccfully edited!")
+    console.log("fully edited!")
     } catch (error){
         console.log(error)
     }
 }
-
-const deleteReminder = async (id) => {
+//delete reminder
+const deleteReminder = async (rId) => {
     try{
-    let data = await promisifyQuery(`DELETE FROM reminder WHERE ID = ${id}`);
-    console.log("susseccfully deleted!")
+    let data = await promisifyQuery(`DELETE FROM reminder WHERE  ID = ${rId}`);
+    console.log("fully deleted!")
     } catch (error){
         console.log(error)
     }
 }
 
-const query = async (id) => {
+const query = async (email, password) => {
     try {
        let data = await promisifyQuery (`
 
@@ -72,12 +72,16 @@ const query = async (id) => {
                LEFT JOIN
            reminder ON persons.id = reminder.personId
        WHERE
-           persons.Id = ${id}`)
+           email = '${email}' AND password = '${password}'`)
 
-       console.log(data)
-       return data
+           return {
+            ID: data[0].Id,
+            Content: data[0].reminder,
+            CA:data[0].created_at
+        }
+        
     } catch (error) {
-        console.log(error.sqlMessage)
+        console.log("You are not registered, Please sign up to use this app")
     }
 }
 module.exports = {
