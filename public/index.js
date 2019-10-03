@@ -11,3 +11,22 @@ subBtn.addEventListener('click', () => {
     
     
 })
+
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("id", `${id}`);
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem(`${id}`);
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+
+  const setData = () => {
+      console.log('SET');
+      localStorage.setItem('id', `${id}`)
+  }
+
+  const cleardata = () => {
+      console.log('CLEAR')
+      localstroange.clear()
+  }
