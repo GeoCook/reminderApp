@@ -27,15 +27,15 @@ app.get('/edit', async (req, res) => {
     await editReminder(req.query.edit,req.query.id,req.query.rId);
     res.send({message:"reminder edited"})
 });
-//access localhost:3012
+//access localhost:3011
     app.get('/pull', async (req, res) => {
        let data = await query (req.query.email);
         res.send(data)
     });
 
     app.get('/delete', async (req, res) => {
-        let data = await deleteReminder (req.query.email);
-         res.send(data)
+        let data = await deleteReminder (req.query.rId);
+        res.send({message:"reminder deleted"})
      });
 app.listen(3011, () => {
     console.log("listening on port 3011");
