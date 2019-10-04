@@ -1,31 +1,85 @@
 body{
-    background: url('./background.png') no-repeat center center fixed;
+    /* background: url('./background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     text-align: center;
     z-index: -1;
+    height: 100vh;*/
+    
 }
 
+/* img{
+    height:20px;
+} */
 
-img{
-    height:100%;
+.wrapper {
+    background-image: url("./background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 100vh;
 }
-
 #content{
     display:flex;
     flex-direction: column;
 }
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fatSharkYes {
+    border-style: solid;
+    border-color: #FF6B6B;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* display: flex;
+    justify-content: space-evenly; */
+    
+    
+    
+}
+
+.container {
+    
+}
+
+.d-flex{
+
+}
+
+#submit-btn{
+    width: 100%;
+    max-width: 100px;
+    padding: 15px;
+    margin: auto;
+    background-color: #FF6B6B;
+    color: #F7FFF7;
+    border-radius: 25px;
+    font-family: 'Architects Daughter', cursive;
+
+}
+
+p {
+    padding-top: 35px;
+}
 
 #sign-in-btn{
     width: 100%;
-    max-width: 330px;
+    max-width: 100px;
     padding: 15px;
     margin: auto;
+    background-color: #4ECDC4;
+    color: #F7FFF7;
+    border-radius: 25px;
+    font-family: 'Architects Daughter', cursive;
 }
 
-#sign-in-btn2{
+#sign-up-btn{
     width: 100%;
     max-width: 100px;
     padding: 15px;
@@ -33,21 +87,12 @@ img{
     background-color: #34C6BB;
     color: #f5f6fa;
     border-radius: 25px;
-}
-
-#sign-up-btn2{
-    width: 100%;
-    max-width: 100px;
-    padding: 15px;
-    margin: auto;
-    background-color: #34C6BB;
-    color: #f5f6fa;
-    border-radius: 25px;
+    font-family: 'Architects Daughter', cursive;
 }
 
 #title{
     margin-bottom: 40px;
-    color: #FF5F64;
+    color: #FF6B6B;
 }
 
 .form-group input[type='email']{
@@ -55,7 +100,12 @@ img{
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
+    margin-left: 25%;
+    border-color: #34C6BB;
+    border-width: 2px;
+
+    
 }
 
 .form-group input[type='password']{
@@ -63,5 +113,43 @@ img{
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     width: 50%;
-    padding:
+    border-radius: 0px 0px 10px 10px;
+    margin-left: 25%;
+    border-color: #34C6BB;
+    border-width: 2px;
 }
+
+.form-single input[type='email']{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 25%;
+    border-color: #34C6BB;
+    border-width: 2px;
+    margin-bottom: 25px;
+
+    
+}
+
+
+#add-btn{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 10;
+    border-bottom-left-radius: 10;
+    width: 50%;
+    /* border-radius: 10px 10px 0px 0px; */
+    margin-left: 25%;
+    border-color: #34C6BB;
+    border-width: 2px;
+    color: #1A535C;
+    margin-top: 350px;
+    background-color: white;
+    font-size: 1.5rem;
+    font-family: 'Architects Daughter', cursive;
+
+
+    
+}
+
