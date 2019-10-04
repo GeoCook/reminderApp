@@ -25,7 +25,7 @@ const addEmail = async (email, password) => {
     let data = await promisifyQuery(`INSERT INTO persons(email, password) Values('${email}', '${password}')` 
     );
     } catch (error){
-        console.log("oops something went wrong")
+        console.log(error)
     }
 }
 
