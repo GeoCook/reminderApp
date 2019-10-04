@@ -11,11 +11,13 @@ class App extends React.Component{
     page:"SignIn"
   }
 
-  register = () => {
+  register = (page) => {
     
     fetch(`http://192.168.5.76:3011/register?email=${this.state.email}&password=${this.state.password}`, {mode: "no-cors"});
     console.log('button clicked')
+    
     this.changePage("SignIn")
+    
 
   }
 
@@ -36,6 +38,7 @@ class App extends React.Component{
     )
   }
   render(){
+
     return (
       <div className="App">
         <h1>reminder app</h1>
@@ -43,8 +46,8 @@ class App extends React.Component{
           this.state.page === "SignUp" ?
             <div>
               <h1>Sign Up</h1>
-              <input type="text" placeholder="enter email" onChange={this.handleEmailChange}></input>
-              <input type="text" placeholder="enter password" onChange={this.handlePasswordChange}></input>
+              <input type="text" value={this.state.email} placeholder="enter email" onChange={this.handleEmailChange}></input>
+              <input type="text" value={this.state.password} placeholder="enter password" onChange={this.handlePasswordChange}></input>
               <button type="submit" onClick={()=>this.register()}>submit</button>
             </div>
           : this.state.page === "Home" ?
@@ -56,8 +59,8 @@ class App extends React.Component{
           :
             <div>
               <h1>Sign In</h1>
-              <input type="text" placeholder="enter email" onChange={this.handleEmailChange}></input>
-              <input type="text" placeholder="enter password" onChange={this.handlePasswordChange}></input>
+              <input type="text" value={this.state.email} placeholder="enter email" onChange={this.handleEmailChange}></input>
+              <input type="text" value={this.state.password} placeholder="enter password" onChange={this.handlePasswordChange}></input>
               <button type="submit" onClick={()=>this.changePage("Home")}>submit</button>
               <button type="submit" onClick={()=>this.changePage("SignUp")}>sign up</button>
             </div>
