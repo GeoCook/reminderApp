@@ -11,16 +11,15 @@ class App extends React.Component{
     page:"SignIn"
   }
 
-  register = (page) => {
-    
-    fetch(`http://192.168.5.76:3011/register?email=${this.state.email}&password=${this.state.password}`, {mode: "no-cors"});
-    console.log('button clicked')
-    
-    this.changePage("SignIn")
-    
+  changePage =  (page)=>{
+    return(
+       this.setState({email: "", password: "", page: page})
 
+      // console.log(`email on page change is ${this.state.email}`)
+    )
   }
 
+  
   handleEmailChange = (event) => {
     this.setState({email: event.target.value})
     console.log(event.target.value)
@@ -29,14 +28,32 @@ class App extends React.Component{
     this.setState({password: event.target.value})
     console.log(event.target.value)
   }
+  
+  register = () => {
 
-  changePage = (page)=>{
-    return(
-      this.setState({email: "", password: "", page: page})
-      // this.setState({page: page})
-      // console.log(`email on page change is ${this.state.email}`)
-    )
+      fetch(`http://192.168.5.76:3011/register?email=${this.state.email}&password=${this.state.password}`, {mode: "no-cors"});
+      console.log('button clicked')
+      
+      this.changePage("SignIn")
+      console.log('added a unique email')
   }
+
+  signInUser = async () => {
+    try{
+     let response = await fetch(`http://192.168.5.76:3011/pull?email=${this.state.email}&password=${this.state.password}`, {mode: "no-cors"});
+     console.log("entered fetch")
+     console.log(`email state in index is ${this.state.email}`)
+      let data = await response.json();
+      console.log(`data is ${data}`)
+      console.log("logged you in pal")
+      // console.log(data.ID)
+      this.changePage("Home")
+    } catch (error){
+      console.log("can't log in pal")
+      // console.log(error)
+    }
+  }
+
   render(){
 
     return (
@@ -53,7 +70,7 @@ class App extends React.Component{
           : this.state.page === "Home" ?
             <div>
               <h1>Home</h1>
-              <input type="text" placeholder="enter reminder"></input>
+              <input type="text" value={this.state.id} placeholder="enter reminder"></input>
               <button type="submit" onClick={()=>this.changePage("SignIn")}>Sign Out</button>
             </div>
           :
@@ -61,7 +78,7 @@ class App extends React.Component{
               <h1>Sign In</h1>
               <input type="text" value={this.state.email} placeholder="enter email" onChange={this.handleEmailChange}></input>
               <input type="text" value={this.state.password} placeholder="enter password" onChange={this.handlePasswordChange}></input>
-              <button type="submit" onClick={()=>this.changePage("Home")}>submit</button>
+              <button type="submit" onClick={()=>this.signInUser()}>submit</button>
               <button type="submit" onClick={()=>this.changePage("SignUp")}>sign up</button>
             </div>
         }

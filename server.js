@@ -1,5 +1,5 @@
 const express = require('express')
-const{runQuery, addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
+const{ addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
 const path = require('path')
 
 const app = express();
@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, "public")))
 
 //display reminders
 app.get('/data', async(req, res) => {
-    let data = await runQuery();
+    let data = await query();
     res.send(data)
 })
 //add email and password to joinus database 
@@ -16,6 +16,7 @@ app.get('/register', async (req, res) => {
     await addEmail(req.query.email, req.query.password);
     res.send(data)
 });
+
 //storing reminders
 app.get('/reminder', async (req, res) => {
     let data = await addReminder(req.query.reminder, req.query.id, req.query.dueDate);
@@ -29,12 +30,14 @@ app.get('/edit', async (req, res) => {
 });
 //access localhost:3012
     app.get('/pull', async (req, res) => {
-       let data = await query (req.query.email);
+        console.log("get pull function thing has been entered")
+        let data = await query(req.query.email, req.query.password);
+        console.log(`data from server.js is ${data}`)
         res.send(data)
     });
 
     app.get('/delete', async (req, res) => {
-        let data = await deleteReminder (req.query.email);
+        let data = await deleteReminder(req.query.email);
          res.send(data)
      });
 app.listen(3011, () => {
