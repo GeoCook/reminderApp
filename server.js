@@ -1,5 +1,5 @@
 const express = require('express')
-const{runQuery, addEmail, addReminder, editReminder, query, deleteReminder} = require('./app')
+const{runQuery, addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
 const path = require('path')
 
 const app = express();
