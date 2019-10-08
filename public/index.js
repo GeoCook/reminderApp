@@ -12,6 +12,8 @@ const logBtn = document.getElementById("sign")
 const addBtn = document.getElementById("add-btn")
 const editBtn = document.getElementById("edit-btn")
 const removeBtn = document.getElementById("remove-btn")
+const signInInputEmail = document.getElementById("signIn-inputEmail")
+
 
 
 
@@ -43,6 +45,7 @@ logBtn.addEventListener('click',  async () => {
 
 
 // ------------- Home ---------------------//
+
 // add a reminder
 addBtn.addEventListener('click', async () => {
     let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${reminder}&id=${loginId}`);
