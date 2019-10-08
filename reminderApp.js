@@ -66,24 +66,27 @@ const query = async (email, password) => {
        let data = await promisifyQuery (`
 
        SELECT 
-           persons.Id, reminder, reminder.created_at
+           persons.Id
        FROM
            persons
                LEFT JOIN
-           reminder ON persons.id = reminder.personId
+           reminder ON persons.Id = reminder.personID
        WHERE
            email = '${email}' AND password = '${password}'`)
-
-           return {
-            ID: data[0].Id,
-            Content: data[0].reminder,
-            CA:data[0].created_at
-        }
+           console.log(data);
+           return data
+        //    {
+        //     ID: data[0].Id,
+        //     Content: data[0].reminder,
+        //     CA:data[0].created_at
+        // }
         
     } catch (error) {
         console.log("You are not registered, Please sign up to use this app")
     }
 }
+
+query('a','a');
 module.exports = {
     // runQuery,
     addEmail,

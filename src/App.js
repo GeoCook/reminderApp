@@ -38,20 +38,41 @@ class App extends React.Component{
       console.log('added a unique email')
   }
 
-  signInUser = async () => {
-    try{
-     let response = await fetch(`http://192.168.5.76:3011/pull?email=${this.state.email}&password=${this.state.password}`, {mode: "no-cors"});
-     console.log("entered fetch")
-     console.log(`email state in index is ${this.state.email}`)
-      let data = await response.json();
-      console.log(`data is ${data}`)
-      console.log("logged you in pal")
-      // console.log(data.ID)
-      this.changePage("Home")
-    } catch (error){
-      console.log("can't log in pal")
-      // console.log(error)
-    }
+  // signInUser = async () => {
+
+  //     let response = await fetch(`http://192.168.5.76:3011/pull?email=${this.state.email}&password=${this.state.password}`,
+  //     {
+  //       // mode: 'no-cors',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     }
+  //     )
+  //     // this.setState({ id: response[0]})
+  //     // let data = await JSON.parse(response)
+  //     console.log(response)
+  //     console.log(response.ID)
+
+  //     // console.log("logged you in pal")
+  //     // this.changePage("Home")
+  // }
+
+
+
+signInUser() {
+    console.log(this.state.email + " " + this.state.password)
+    fetch(`http://192.168.5.76:3011/pull?email=${this.state.email}&password=${this.state.password}`, {
+      mode: "no-cors"
+    })
+      .then(response => {
+        console.log(response)
+        return response.json()
+      })
+      .then(json => {
+        console.log('parson json', json)
+      })
+    
+      console.log(this.state.id)
   }
 
   render(){
