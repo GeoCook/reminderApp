@@ -10,6 +10,7 @@ const connection = mysql.createConnection({
 
 const promisifyQuery = promisify(connection.query).bind(connection);
 
+
 // const runQuery = async (email) => {
 //  try {
 //     let data = await promisifyQuery (`SELECT reminder, created_at FROM persons LEFT JOIN reminder ON persons.id = reminder.personId WHERE email = '${email}'`)
@@ -20,18 +21,29 @@ const promisifyQuery = promisify(connection.query).bind(connection);
 //  connection.end()
 // }
 
+const runQuery = async (email) => {
+ try {
+    let data = await promisifyQuery (`SELECT reminder, created_at FROM persons LEFT JOIN reminder ON persons.id = reminder.personId WHERE email = '${email}'`)
+    console.log(data)
+ } catch (error) {
+     console.log(error.sqlMessage)
+ }
+//  connection.end()
+}
+
+
 const addEmail = async (email, password) => {
     try{
     let data = await promisifyQuery(`INSERT INTO persons(email, password) Values('${email}', '${password}')` 
     );
     } catch (error){
-        console.log("oops something went wrong")
+        console.log(error)
     }
 }
 
-const addReminder = async (reminder, id, dueDate) => {
+const addReminder = async (reminder, id) => {
     try{
-        let data = await promisifyQuery(`INSERT INTO reminder(reminder, personID) Values('${reminder}', ${id}, ${dueDate})` 
+        let data = await promisifyQuery(`INSERT INTO reminder(reminder, personID) Values('${reminder}', ${id})` 
     );
     console.log("fully added!")
     } catch (error){
@@ -65,24 +77,28 @@ const query = async (email, password) => {
     try {
        let data = await promisifyQuery (`
 
-       SELECT 
-           persons.Id
-       FROM
-           persons
-               LEFT JOIN
-           reminder ON persons.Id = reminder.personID
-       WHERE
-           email = '${email}' AND password = '${password}'`)
-           console.log(data);
-           return data
-        //    {
-        //     ID: data[0].Id,
-        //     Content: data[0].reminder,
-        //     CA:data[0].created_at
-        // }
+
+            SELECT 
+                persons.Id, reminder.reminder, reminder.created_at
+            FROM
+                persons
+                    LEFT JOIN
+                reminder ON persons.Id = reminder.personID
+            WHERE
+                email = '${email}' AND password = '${password}'`
+        )
+        console.log(data)
+        
+        return data 
+            // {
+            //     ID: data[0].Id,
+            //     REMINDER: data[0].reminder,
+            //     CA: data[0].created_at
+            // }
+        
         
     } catch (error) {
-        console.log("You are not registered, Please sign up to use this app")
+        console.log(error)
     }
 }
 
