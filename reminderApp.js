@@ -11,16 +11,6 @@ const connection = mysql.createConnection({
 const promisifyQuery = promisify(connection.query).bind(connection);
 
 
-// const runQuery = async (email) => {
-//  try {
-//     let data = await promisifyQuery (`SELECT reminder, created_at FROM persons LEFT JOIN reminder ON persons.id = reminder.personId WHERE email = '${email}'`)
-//     console.log(data)
-//  } catch (error) {
-//      console.log(error.sqlMessage)
-//  }
-//  connection.end()
-// }
-
 const runQuery = async (email) => {
  try {
     let data = await promisifyQuery (`SELECT reminder, created_at FROM persons LEFT JOIN reminder ON persons.id = reminder.personId WHERE email = '${email}'`)
@@ -28,7 +18,7 @@ const runQuery = async (email) => {
  } catch (error) {
      console.log(error.sqlMessage)
  }
-//  connection.end()
+ connection.end()
 }
 
 
@@ -89,22 +79,20 @@ const query = async (email, password) => {
         )
         console.log(data)
         
-        return data 
-            // {
-            //     ID: data[0].Id,
-            //     REMINDER: data[0].reminder,
-            //     CA: data[0].created_at
-            // }
+        return ( 
+            {
+                ID: data[0].Id,
+                REMINDER: data[0].reminder,
+                CA: data[0].created_at
+            })
         
         
     } catch (error) {
         console.log(error)
     }
 }
-
-query('a','a');
 module.exports = {
-    // runQuery,
+     runQuery,
     addEmail,
     addReminder,
     deleteReminder,
