@@ -68,7 +68,7 @@ p {
     padding-top: 35px;
 }
 
-#sign-in-btn{
+#sign{
     width: 100%;
     max-width: 100px;
     padding: 15px;
@@ -151,5 +151,27 @@ p {
 
 
     
+}
+
+#edit-btn {
+    width: 100%;
+    max-width: 100px;
+    padding: 15px;
+    margin: auto;
+    background-color: #34C6BB;
+    color: #f5f6fa;
+    border-radius: 25px;
+    font-family: 'Architects Daughter', cursive;
+}
+
+#remove-btn {
+    width: 100%;
+    max-width: 100px;
+    padding: 15px;
+    margin: auto;
+    background-color: red;
+    color: #f5f6fa;
+    border-radius: 25px;
+    font-family: 'Architects Daughter', cursive;
 }
 
