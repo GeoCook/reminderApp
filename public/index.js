@@ -2,11 +2,11 @@ const addBtn = document.getElementById("add-btn")
 const editBtn = document.getElementById("edit-btn")
 const removeBtn = document.getElementById("remove-btn")
 
-let loginId=localStorage.getItem('Data')
+// let loginId=localStorage.getItem('Data')
 
 //add a reminder
 addBtn.addEventListener('click', async () => {
-    let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${email}&id=${loginId}&dueDate=${dueDate}`, {mode: "no-cors"});
+    let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${reminder}&id=${loginId}`, {mode: "no-cors"});
     let data = await response.json();
 })
 // edit a reminder

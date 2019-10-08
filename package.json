@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.5",
+    "mysql": "^2.17.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-scripts": "3.2.0"
@@ -33,5 +35,13 @@
   "devDependencies": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderJKeen/reminderApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexanderJKeen/reminderApp/issues"
+  },
+  "homepage": "https://github.com/AlexanderJKeen/reminderApp#readme"
 }
