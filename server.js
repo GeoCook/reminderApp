@@ -1,5 +1,5 @@
 const express = require('express')
-const{runQuery, addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
+const{ addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
 const path = require('path')
 const cors = require('cors')
 
@@ -15,7 +15,7 @@ app.use(cors({
 
 //display reminders
 app.get('/data', async(req, res) => {
-    let data = await runQuery();
+    let data = await query();
     res.send(data)
 })
 //add email and password to joinus database 
@@ -24,6 +24,7 @@ app.get('/register', async (req, res) => {
     //res.send(data)
     console.log("user has been registered")
 });
+
 //storing reminders
 app.get('/reminder', async (req, res) => {
     let data = await addReminder(req.query.reminder, req.query.id);
@@ -35,6 +36,7 @@ app.get('/edit', async (req, res) => {
     await editReminder(req.query.edit,req.query.id,req.query.rId);
     res.send({message:"reminder edited"})
 });
+
 
 //access localhost:3011
 app.get('/pull', async (req, res) => {
