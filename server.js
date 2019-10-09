@@ -1,6 +1,7 @@
 const express = require('express')
 const{ addEmail, addReminder, editReminder, query, deleteReminder} = require('./reminderApp')
 const path = require('path')
+const port = process.env.PORT || 3011;
 
 
 const app = express();
@@ -57,6 +58,6 @@ app.get('/delete', async (req, res) => {
     res.send({message:"reminder deleted"})
 });
 
-app.listen(3011, () => {
-    console.log("listening on port 3011");
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 });

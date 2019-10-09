@@ -24,7 +24,7 @@ const signInInputEmail = document.getElementById("signIn-inputEmail")
 
 subBtn.addEventListener('click', async () => {
      // document.getElementById('load').innerHTML="Loading..."
-    let response = await fetch(`http://192.168.5.76:3011/register?email=${inputEmailSU.value}&password=${inputPasswordSU.value}`);
+    let response = await fetch(`/register?email=${inputEmailSU.value}&password=${inputPasswordSU.value}`);
     let data = await response.json()
     console.log(data)
 });
@@ -33,7 +33,7 @@ subBtn.addEventListener('click', async () => {
 
 // ------------- sign in ---------------------//
 logBtn.addEventListener('click',  async () => {
-    let response = await fetch(`http://192.168.5.76:3011/pull?email=${inputEmailSI.value}&password=${inputPasswordSI.value}`)
+    let response = await fetch(`/pull?email=${inputEmailSI.value}&password=${inputPasswordSI.value}`)
     // console.log(response)
     let data = await response.json();
     // localStorage.setItem('ID',`${data.ID}`)
@@ -50,20 +50,20 @@ logBtn.addEventListener('click',  async () => {
 
 // // add a reminder
 // addBtn.addEventListener('click', async () => {
-//     let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${reminder}&id=${loginId}`);
+//     let response = await fetch(`/reminder?reminder=${reminder}&id=${loginId}`);
 //     let data = await response.json();
 //     console.log(data)
 // })
 // // edit a reminder
 // editBtn.addEventListener('click', async () => {
     
-//     let response = await fetch(`http://192.168.5.76:3011/edit?edit=${edit}&id=${loginId}&rId=${rId}`);
+//     let response = await fetch(`/edit?edit=${edit}&id=${loginId}&rId=${rId}`);
 //     let data = await response.json();
 // })
 // // delete a reminder
 // removeBtn.addEventListener('click', async () => {
     
-//     let response = await fetch(`http://192.168.5.76:3011/delete?rId=${rId}`);
+//     let response = await fetch(`/delete?rId=${rId}`);
 // })
 
 
