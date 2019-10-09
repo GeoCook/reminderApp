@@ -1,12 +1,14 @@
 
 //------------ sign up variables ------------------//
-const subBtn = document.getElementById("sign-up-btn")
+const subBtn = document.getElementById("submitSignUp")
+const inputEmailSU = document.getElementById("emailSignUp")
+const inputPasswordSU = document.getElementById("passwordSignUp1")
 
 //-------------- sign in variables-----------------//
 
-const inputEmail1 = document.getElementById("signIn-inputEmail")
-const inputPassword = document.getElementById("inputPassword")
-const logBtn = document.getElementById("sign")
+const inputEmailSI = document.getElementById("emailSignIn")
+const inputPasswordSI = document.getElementById("passwordSignIn")
+const logBtn = document.getElementById("submitSignIn")
 
 //--------------home variables
 const addBtn = document.getElementById("add-btn")
@@ -31,7 +33,7 @@ subBtn.addEventListener('click', async () => {
 
 // ------------- sign in ---------------------//
 logBtn.addEventListener('click',  async () => {
-    let response = await fetch(`http://192.168.5.76:3011/pull?email=${inputEmail1.value}&password=${inputPassword.value}`)
+    let response = await fetch(`http://192.168.5.76:3011/pull?email=${inputEmailSI.value}&password=${inputPasswordSI.value}`)
     // console.log(response)
     let data = await response.json();
     // localStorage.setItem('ID',`${data.ID}`)
@@ -46,23 +48,23 @@ logBtn.addEventListener('click',  async () => {
 
 // ------------- Home ---------------------//
 
-// add a reminder
-addBtn.addEventListener('click', async () => {
-    let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${reminder}&id=${loginId}`);
-    let data = await response.json();
-    console.log(data)
-})
-// edit a reminder
-editBtn.addEventListener('click', async () => {
+// // add a reminder
+// addBtn.addEventListener('click', async () => {
+//     let response = await fetch(`http://192.168.5.76:3011/reminder?reminder=${reminder}&id=${loginId}`);
+//     let data = await response.json();
+//     console.log(data)
+// })
+// // edit a reminder
+// editBtn.addEventListener('click', async () => {
     
-    let response = await fetch(`http://192.168.5.76:3011/edit?edit=${edit}&id=${loginId}&rId=${rId}`);
-    let data = await response.json();
-})
-// delete a reminder
-removeBtn.addEventListener('click', async () => {
+//     let response = await fetch(`http://192.168.5.76:3011/edit?edit=${edit}&id=${loginId}&rId=${rId}`);
+//     let data = await response.json();
+// })
+// // delete a reminder
+// removeBtn.addEventListener('click', async () => {
     
-    let response = await fetch(`http://192.168.5.76:3011/delete?rId=${rId}`);
-})
+//     let response = await fetch(`http://192.168.5.76:3011/delete?rId=${rId}`);
+// })
 
 
 // ------------- function calls ---------------------//
