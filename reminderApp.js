@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     user: "0YYXfjdxjH",
     password: "XBHFzork90",
     database: "0YYXfjdxjH"
-})s
+})
 
 const promisifyQuery = promisify(connection.query).bind(connection);
 
